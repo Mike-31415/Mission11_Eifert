@@ -1,0 +1,6 @@
+@Mission11_Eifert_HostAddress = http://localhost:5068
+
+GET {{Mission11_Eifert_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
