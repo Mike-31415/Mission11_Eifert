@@ -9,3 +9,8 @@ export interface Book {
     pageCount: number;
     price: number;
 }
+
+export interface CartItem {
+  book: Book;
+  quantity: number;
+}
