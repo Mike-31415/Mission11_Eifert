@@ -55,4 +55,33 @@ public class BooksController : ControllerBase
 
         return Ok(categories);
     }
+    // POST: api/books
+    [HttpPost]
+    public async Task<IActionResult> AddBook([FromBody] Books book)
+    {
+        _context.Books.Add(book);
+        await _context.SaveChangesAsync();
+        return Ok(book);
+    }
+
+    // PUT: api/books/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateBook(int id, [FromBody] Books book)
+    {
+        if (id != book.BookID) return BadRequest();
+        _context.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return Ok(book);
+    }
+
+    // DELETE: api/books/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteBook(int id)
+    {
+        var book = await _context.Books.FindAsync(id);
+        if (book == null) return NotFound();
+        _context.Books.Remove(book);
+        await _context.SaveChangesAsync();
+        return NoContent();
+}
 }
