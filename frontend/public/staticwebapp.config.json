@@ -1,9 +1,18 @@
 {
   "mimeTypes": {
     ".js": "text/javascript",
-    ".mjs": "text/javascript"
+    ".mjs": "text/javascript",
+    ".css": "text/css"
   },
   "navigationFallback": {
-    "rewrite": "/index.html"
-  }
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*"]
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ]
 }
