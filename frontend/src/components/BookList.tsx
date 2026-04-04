@@ -2,7 +2,7 @@ import type { Book } from "../types/Book";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import API_BASE from "../config";
+import { API_BASE } from "../config";
 
 function BookList() {
   const [books, setBooks] = useState<Book[]>([]);

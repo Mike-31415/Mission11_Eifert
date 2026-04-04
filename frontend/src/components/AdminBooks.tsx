@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Book } from "../types/Book";
-import API_BASE from "../config";
+import { API_BASE } from "../config";
 
 const emptyBook: Omit<Book, "bookID"> = {
   title: "",
