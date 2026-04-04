@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Book } from "../types/Book";
+import API_BASE from "../config";
 
 const emptyBook: Omit<Book, "bookID"> = {
   title: "",
@@ -18,7 +19,7 @@ function AdminBooks() {
   const [editingBook, setEditingBook] = useState<Book | null>(null);
   const [formData, setFormData] = useState<Omit<Book, "bookID">>(emptyBook);
 
-  const API = "http://localhost:5068/api/books";
+  const API = `${API_BASE}/books`;
 
   const fetchBooks = () => {
     fetch(`${API}?pageSize=1000`)

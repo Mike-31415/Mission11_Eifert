@@ -2,6 +2,7 @@ import type { Book } from "../types/Book";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import API_BASE from "../config";
 
 function BookList() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -16,7 +17,7 @@ function BookList() {
 
   // Fetch categories once
   useEffect(() => {
-    fetch("http://localhost:5068/api/books/categories")
+    fetch(`${API_BASE}/books/categories`)
       .then((res) => res.json())
       .then(setCategories);
   }, []);
@@ -27,7 +28,7 @@ function BookList() {
       ? `&category=${encodeURIComponent(selectedCategory)}`
       : "";
     fetch(
-      `http://localhost:5068/api/books?page=${page}&pageSize=${pageSize}&sortOrder=${sortOrder}${categoryParam}`
+      `${API_BASE}/books?page=${page}&pageSize=${pageSize}&sortOrder=${sortOrder}${categoryParam}`
     )
       .then((res) => res.json())
       .then((data) => {
